@@ -352,7 +352,7 @@ function importPreset(p) {
   preset = preset.split(":-:")
   let colors = preset[0].split(",")
   let nickname = preset[1]
- 
+
   const container = $('#hexColors');
   container.empty();
     // Need to add some colors

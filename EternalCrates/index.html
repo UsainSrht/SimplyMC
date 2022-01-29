@@ -1,0 +1,162 @@
+<html lang="en">
+
+<head>
+  <meta content="SimplyMC" property="og:title" />
+  <meta content="Minecraft multitool for everyone" property="og:description" />
+  <meta content="https://www.simplymc.art/" property="og:url" />
+  <meta content="https://www.simplemc.art/assets/images/emc.png" property="og:image" />
+  <meta content="#9C0000" data-react-helmet="true" name="theme-color" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="/assets/images/emc.png" type="image/x-icon">
+  <title>Eternal Crates Reward Maker</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SimplyMC</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="../">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Gradients <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../Gradients/">Hex Gradients</a></li>
+          <li><a href="../AnimTAB/">Animated TAB</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Misc <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a class="active" href="#">Eternal Crates</a></li>
+        </ul>
+      </li>
+      <li><a href="../CircleGen/">Circle Generator</a></li>
+      <li><a href="#">Coming Soon</a></li>
+      <li><a href="https://github.com/Oli-idk/SimplyMC"><img src="/assets/images/github.png" height="20px"></a></li>
+      <li><a href="https://discord.akiradev.xyz"><img src="/assets/images/discord.png" height="20px"></a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="hexColorTemplate" style="display:none;">
+  <div class="row">
+    <label for="action-$NUM">Action #$NUM</label>
+    <input class="form-control col-md-1" id="color-$NUM" value="$VAL"
+        onchange="javascript: updateOutputText(event);"/>
+  </div>
+</div>
+<div
+
+<div id="content">
+  <h1 id="title">EternalCrates Rewards</h1>
+  <p>Reward generator for <a href="https://www.spigotmc.org/resources/eternalcrates-1-16.97992/">Eternal Crates</a></p>
+  <button class="btn btn-primary" onclick="javascript: addReward();">Add Reward</button>
+  <center><button class="btn btn-primary" id="generate" onclick="javascript: generateRewards()">Generate Rewards</button></center>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2" style="padding-left: 0;">
+        <div id="rewards" class="container-fluid">
+          <!-- Will be populated in JavaScript -->
+        </div>
+      </div>
+      <div class="col-md-9" style="padding-right: 0;">
+        <div id="inputs">
+            <div class="container-fluid">
+                <div class="input">
+                    <div class="col-md-3" style="padding-left: 0;">
+                        <label for="materials">Material</label>
+                        <input class="form-control" type="text" list="materials" id="materialSearchBox" name="materialSearchBox" placeholder="Search Material" autofocus autocomplete="on">
+                            <datalist id="materials" onchange="updateOutputText(event);">
+                            <!--- Will be populated in JavaScript -->
+                            </datalist>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="col-md-3" style="padding-left: 0;">
+                        <label for="enchants">Enchants</label>
+                        <input class="form-control" type="text" list="enchants" id="materialSearchBox" name="materialSearchBox" placeholder="Search Material" autofocus autocomplete="on">
+                            <datalist id="enchants" onchange="updateEnchants(event);">
+                            <!--- Will be populated in JavaScript -->
+                            </datalist>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="col-md-3" style="padding-left: 0;">
+                    <label for="displayName">Item Name</label>
+                    <input class="form-control" id="displayName" type="text" maxlength="100" placeholder="Your Text"
+                            value="SimplyMC" oninput="javascript: updateOutputText(event);"
+                            onchange="javascript: updateOutputText(event)">
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="col-md-3" style="padding-left: 0;">
+                    <label for="item-glow">Glowing</label>
+                    <select id="item-glow"
+                            class="form-control"
+                            onchange="updateOutputText(event);">
+                        <option value='true'>On</option>
+                        <option value='false'>Off</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input">
+                <div class="col-md-3" style="padding-left: 0;">
+                <label for="lore">Lore</label>
+                <input class="form-control" id="lore" type="text" maxlength="100" placeholder="Your Text"
+                        value="&b&lThis Is Lore" oninput="javascript: updateOutputText(event);"
+                        onchange="javascript: updateOutputText(event)">
+                </div>
+            </div>
+            <div class="input">
+                <div class="col-md-3" style="padding-left: 0;">
+                <label for="texture-owner">Texture/Owner</label>
+                <input class="form-control" id="texture-owner" type="text" placeholder="Something here idk"
+                        value=""
+                        onchange="javascript: setTexture('texture-owner', this.value)">
+                </div>
+            </div>
+            <div class="input">
+                <div class="col-md-3" style="padding-left: 0;">
+                <label for="amount">Amount of item</label>
+                <input class="form-control"
+                    value="1" id="amount" type="number" min="1" max="64"
+                    onchange="updateOutputText(event);"
+                    oninput="updateOutputText(event);"/>
+            </div>
+            <div class="input">
+                <div class="col-md-3" style="padding-left: 0;">
+                <label for="nbt">NBT Tags</label>
+                <input class="form-control" id="nbt" type="text" placeholder="Something here idk"
+                        value="" oninput="javascript: updateOutputText(event);"
+                        onchange="javascript: updateOutputText(event)">
+                </div>
+            </div>
+            <div class="input">
+                <div class="col-md-3" style="padding-left: 0;">
+                <label for="chance">Reward chance</label>
+                <input class="form-control"
+                    value="2" id="chance" type="number" min="1" max="100"
+                    onchange="updateOutputText(event); toggleColors(this.value);"
+                    oninput="updateOutputText(event); toggleColors(this.value);"/>
+            </div>
+            </div>
+        </div>
+  </div>
+</div>
+<label for="actions" style="font-size: 50px;">Actions</label>
+<div id="actions" class="container-fluid">
+  <button class="btn btn-primary">Add Action</button>
+</div>
+</div>
+</div>
+<script src="script.js"></script>
+<script>window.onload=getMaterials(); getSounds(); getEnchants();</script>
+</body>
+
+</html>

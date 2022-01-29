@@ -31,6 +31,12 @@
           <li><a href="../AnimTAB/">Animated TAB</a></li>
         </ul>
       </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Misc <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../EternalCrates/">Eternal Crates</a></li>
+        </ul>
+      </li>
       <li><a href="../CircleGen/">Circle Generator</a></li>
       <li><a href="#">Coming Soon</a></li>
       <li><a href="https://github.com/Oli-idk/SimplyMC"><img src="/assets/images/github.png" height="20px"></a></li>
@@ -43,8 +49,8 @@
   <div class="row">
     <label for="color-$NUM">Hex Color #$NUM</label>
     <input class="form-control col-md-1 hexColor" id="color-$NUM" value="$VAL"
-           data-jscolor="{preset:'small dark', position:'right'}" oninput="javascript: updateOutputText(event)"
-           onchange="javascript: updateOutputText(event); Cookies.set(`#${$NUM}`, document.getElementById('color-$NUM').value, { expires: 7, path: '' })"/>
+          data-jscolor="{preset:'small dark', position:'right'}" oninput="javascript: updateOutputText(event)"
+          onchange="javascript: updateOutputText(event); Cookies.set(`#${$NUM}`, document.getElementById('color-$NUM').value, { expires: 7, path: '' })"/>
   </div>
 </div>
 
@@ -66,7 +72,7 @@
               <label for="outputText" style="font-weight: normal;">This is what you put in the
                 chat. Click on it to copy.</label>
               <pre id="outputText"
-                   onclick="copyTextToClipboard(this.textContent);"></pre>
+                  onclick="copyTextToClipboard(this.textContent);"></pre>
               <p id="error">This is more than 256 characters and may not fit in the chat box.</p>
             </div>
           </div>
@@ -77,8 +83,8 @@
             <div class="col-md-3" style="padding-left: 0;">
               <label for="nickname">Text</label>
               <input class="form-control" id="nickname" type="text" maxlength="100" placeholder="Your Text"
-                     value="SimplyMC" oninput="javascript: updateOutputText(event);"
-                     onchange="javascript: updateOutputText(event)">
+                    value="SimplyMC" oninput="javascript: updateOutputText(event);"
+                    onchange="javascript: updateOutputText(event)">
             </div>
           </div>
           <div class="row">
@@ -133,10 +139,10 @@
           <div class="row">
             <label for="points">Number of Points</label>
             <input class="form-control"
-                   style="width: 75px;"
-                   value="1" id="points" type="number" min="1" max="10"
-                   onchange="updateOutputText(event);"
-                   oninput="updateOutputText(event);"/>
+                  style="width: 75px;"
+                  value="1" id="points" type="number" min="1" max="10"
+                  onchange="updateOutputText(event);"
+                  oninput="updateOutputText(event);"/>
           </div>
           <div class="row">
             <label for="numOfColors">Number of Colors</label>
